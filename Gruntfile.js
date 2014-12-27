@@ -35,24 +35,87 @@ module.exports = function (grunt) {
     /**
      * JSCP Reporter
      */
-    function jscpdreporter() {
+    function jsCpdReporter() {
+
+
+        // ############################################## Attributes // ################################################
 
         /**
+         * Configuration object
          * @var {object} config
          */
         var config = grunt.config.get('jscpdreporter');
 
-        console.log(grunt.config.get('jscpdreporter'));
+        /**
+         * Get path object
+         * @var {object} path
+         */
+        var path = require('path');
 
-        var parseString = require('xml2js').parseString;
-        var xml = "<root>Hello xml2js!</root>"
-        parseString(xml, function (err, result) {
-            console.dir(result);
-        });
+        /**
+         * Get fs object
+         * @var {object} fs
+         */
+        var fs = require('fs');
+
+        /**
+         * Template path
+         * @var {string} templatePath
+         */
+        var templatePath = path.join(__dirname) + '/templates/';
+
+        /**
+         * Copy- / Past detection output holder
+         * @var {string} cpdOutput
+         */
+        var cpdOutput = '';
+
+        /**
+         * Templates
+         * @var {object} templates
+         */
+        var templates = {
+            layout: '',
+            _item: ''
+        };
+
+
+
+        // ################################################ Methods // #################################################
+
+        /**
+         * Init function
+         */
+        function init() {
+
+            loadTemplates();
+
+            console.log(templates);
+
+            var parseString = require('xml2js').parseString;
+            var xml = "<root>Hello xml2js!</root>"
+            parseString(xml, function (err, result) {
+                console.dir(result);
+            });
+        }
+
+
+        /**
+         * Load html template files
+         *
+         */
+        function loadTemplates() {
+            for (var template in templates) {
+                templates[template] = fs.readFileSync(templatePath + template + '.html').toString();
+            }
+        }
+
+        //run
+        init();
     }
 
 
     // Default task.
-    grunt.registerTask('default', jscpdreporter);
+    grunt.registerTask('default', jsCpdReporter);
 
 };
