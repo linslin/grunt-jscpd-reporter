@@ -19,15 +19,12 @@ module.exports = function (grunt) {
     //use strict -> ECMAScript5 error reporting
     'use strict';
 
-    // Load local tasks.
-    grunt.loadTasks('tasks');
-
     // Project configuration.
     grunt.initConfig({
 
         jscpdreporter: {
             sourcefile: 'mocks/output.xml',
-            output: 'report/index.html'
+            outputDir: 'report/'
         }
     });
 
@@ -112,7 +109,9 @@ module.exports = function (grunt) {
             //render output
             renderHtmlOutput();
 
-            console.log(itemsHTML);
+            //create report
+            createReport();
+
         }
 
 
@@ -146,8 +145,6 @@ module.exports = function (grunt) {
          */
         function renderHtmlOutput () {
 
-            console.log(cpdOutput['pmd-cpd'].duplication);
-
             if (cpdOutput['pmd-cpd'].duplication !== undefined) {
                 for (var key in cpdOutput['pmd-cpd'].duplication) {
 
@@ -156,9 +153,8 @@ module.exports = function (grunt) {
 
                     for (var prop in item) {
                         if(item.hasOwnProperty(prop)){
-                            //console.log(prop + " = " + item[prop]);
-                            //console.log(item[prop].lines);
 
+                            //set lines
                             if (item[prop].lines !== undefined) {
                                 itemsHTML += templates._item.replace('{{lines}}', item[prop].lines)
                             }
@@ -166,7 +162,19 @@ module.exports = function (grunt) {
                     }
                 }
             }
+
+            //render items into layout
+            outputHTML += templates.layout.replace('{{content}}', itemsHTML);
         }
+
+
+        /**
+         * Create report
+         */
+        function createReport () {
+            fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/index.html', outputHTML );
+        }
+
 
         //run
         init();
