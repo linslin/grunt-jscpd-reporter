@@ -1,8 +1,8 @@
 {
   "name": "grunt-jscpd-reporter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Grunt JSCPD Reporter",
-  "main": "index.js",
+  "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
