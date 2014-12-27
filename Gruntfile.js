@@ -102,6 +102,9 @@ module.exports = function (grunt) {
          */
         function init() {
 
+            //cleanup report
+            fs.unlink(path.join(__dirname) + '/' + config.outputDir + '/*');
+
             //load templates and output xml
             loadTemplates();
             loadOutputXml();
@@ -156,7 +159,12 @@ module.exports = function (grunt) {
 
                             //set lines
                             if (item[prop].lines !== undefined) {
-                                itemsHTML += templates._item.replace('{{lines}}', item[prop].lines)
+                                itemsHTML += templates._item.replace('{{lines}}', item[prop].lines);
+                            }
+
+                            //set tokens
+                            if (item[prop].tokens !== undefined) {
+                                itemsHTML = itemsHTML.replace('{{tokens}}', item[prop].tokens);
                             }
                         }
                     }
