@@ -59,6 +59,12 @@ module.exports = function (grunt) {
         var fs = require('fs');
 
         /**
+         * Get xml2js object
+         * @var {object} fs
+         */
+        var xml2js = require('xml2js');
+
+        /**
          * Template path
          * @var {string} templatePath
          */
@@ -80,7 +86,6 @@ module.exports = function (grunt) {
         };
 
 
-
         // ################################################ Methods // #################################################
 
         /**
@@ -88,26 +93,36 @@ module.exports = function (grunt) {
          */
         function init() {
 
+            //load templates and output xml
             loadTemplates();
+            loadOutputXml();
 
-            console.log(templates);
-
-            var parseString = require('xml2js').parseString;
-            var xml = "<root>Hello xml2js!</root>"
-            parseString(xml, function (err, result) {
-                console.dir(result);
-            });
+            
         }
 
 
         /**
          * Load html template files
-         *
          */
         function loadTemplates() {
             for (var template in templates) {
                 templates[template] = fs.readFileSync(templatePath + template + '.html').toString();
             }
+        }
+
+
+        /**
+         * Load cpd output xml and parse it to an js object
+         */
+        function loadOutputXml() {
+
+            //read output file
+            cpdOutput = fs.readFileSync(path.join(__dirname) + '/' + config.sourcefile).toString();
+
+            //parse output xml
+            xml2js.parseString(cpdOutput, function(err, result){
+                 cpdOutput = result;
+            });
         }
 
         //run
