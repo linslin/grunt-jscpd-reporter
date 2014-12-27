@@ -77,6 +77,18 @@ module.exports = function (grunt) {
         var cpdOutput = '';
 
         /**
+         * Rendered HTML output string
+         * @var {string} outputHTML
+         */
+        var outputHTML = '';
+
+        /**
+         * Rendered HTML item output string
+         * @var {string} outputHTML
+         */
+        var itemsHTML = '';
+
+        /**
          * Templates
          * @var {object} templates
          */
@@ -97,7 +109,10 @@ module.exports = function (grunt) {
             loadTemplates();
             loadOutputXml();
 
-            
+            //render output
+            renderHtmlOutput();
+
+            console.log(itemsHTML);
         }
 
 
@@ -123,6 +138,34 @@ module.exports = function (grunt) {
             xml2js.parseString(cpdOutput, function(err, result){
                  cpdOutput = result;
             });
+        }
+
+
+        /**
+         * Render HTML Output
+         */
+        function renderHtmlOutput () {
+
+            console.log(cpdOutput['pmd-cpd'].duplication);
+
+            if (cpdOutput['pmd-cpd'].duplication !== undefined) {
+                for (var key in cpdOutput['pmd-cpd'].duplication) {
+
+                    //make item global for run
+                    var item = cpdOutput['pmd-cpd'].duplication[key];
+
+                    for (var prop in item) {
+                        if(item.hasOwnProperty(prop)){
+                            //console.log(prop + " = " + item[prop]);
+                            //console.log(item[prop].lines);
+
+                            if (item[prop].lines !== undefined) {
+                                itemsHTML += templates._item.replace('{{lines}}', item[prop].lines)
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         //run
