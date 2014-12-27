@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?><pmd-cpd> <duplication lines='22' tokens='70'> <file path='app/scripts/modules/api/services/category.service.js' line='50'/> <file path='app/scripts/modules/api/services/highlight.service.js' line='50'/> <codefragment>                        deferred.resolve(result);
+                    }, function (error) {
+                        deferred.resolve(error);
+                    });
+
+                    return deferred.promise;
+                }
+            }
+        }
+
+
+        /**
+         * Get categories API Request
+         *
+         * @param $resource
+         * @param ENV
+         * @param $http
+         *
+         * @returns {*}
+         */
+        function getCategoriesRequest($resource, ENV, $http) {
+
+            return $resource(ENV.apiBaseUrl + ENV.categoryRequestUrlPattern, {</codefragment> </duplication> <duplication lines='15' tokens='93'> <file path='app/scripts/modules/api/services/category.service.js' line='73'/> <file path='app/scripts/modules/api/services/highlight.service.js' line='73'/> <codefragment>                token: &#039;@token&#039;,
+                localeId:&#039;@localeId&#039;
+            }, {
+                get: {
+                    method: &#039;POST&#039;,
+                    isArray: false,
+                    transformResponse: [function (data, headersGetter) {
+                        return angular.fromJson(data);
+                    }].concat($http.defaults.transformResponse),
+                    timeout: ENV.timeout
+                }
+            });
+        }
+})();</codefragment> </duplication> <duplication lines='12' tokens='80'> <file path='app/scripts/modules/api/services/category.service.js' line='76'/> <file path='app/scripts/modules/api/services/imprint.service.js' line='76'/> <codefragment>                get: {
+                    method: &#039;POST&#039;,
+                    isArray: false,
+                    transformResponse: [function (data, headersGetter) {
+                        return angular.fromJson(data);
+                    }].concat($http.defaults.transformResponse),
+                    timeout: ENV.timeout
+                }
+            });
+        }
+})();</codefragment> </duplication> <duplication lines='13' tokens='85'> <file path='app/scripts/modules/api/services/imprint.service.js' line='75'/> <file path='app/scripts/modules/api/services/locale.service.js' line='74'/> <codefragment>            }, {
+                get: {
+                    method: &#039;POST&#039;,
+                    isArray: false,
+                    transformResponse: [function (data, headersGetter) {
+                        return angular.fromJson(data);
+                    }].concat($http.defaults.transformResponse),
+                    timeout: ENV.timeout
+                }
+            });
+        }
+})();</codefragment> </duplication> <duplication lines='35' tokens='188'> <file path='app/scripts/modules/app/services/model.service.js' line='296'/> <file path='app/scripts/modules/app/services/model.service.js' line='350'/> <codefragment>
+                var data = {};
+
+
+                //start async progress
+                var deferred = $q.defer();
+                var promises = angular.forEach(this._attributes, function(attribute) {
+
+                    //check if attribute is in scope and overstep if not.
+                    //empty scope = every attribute will be updated
+                    if (Object.keys(attributes).length &gt; 0 &amp;&amp; angular.isUndefined(attributes[attribute.name])) {
+                        return; //means continue in third party loops
+                    }
+
+                    switch (attribute.type) {
+
+                        case &#039;pk&#039;: // do nothing with PK
+                            break;
+
+                        case &#039;integer&#039;:
+                            data[attribute.name] =  attributes[attribute.name];
+                            break;
+
+                        case &#039;text&#039;:
+                            data[attribute.name] =  String(attributes[attribute.name]);
+                            break;
+                    }
+                });
+
+
+                $q.all(promises).then(function(){
+
+                    //query db
+                    self.data = db.localStorage.queryAll(self._table, {&quot;query&quot;: data});
+                    deferred.resolve(true);
+                });</codefragment> </duplication></pmd-cpd>

@@ -16,3 +16,32 @@
 
 
 // ##################################################  Module define // ################################################
+
+
+module.exports = {
+
+    /**
+     * JSCPD Reporter object
+     *
+     * @param result
+     */
+    reporter: function (result) {
+
+        // ########################################## Object attributes // #############################################
+
+        /**
+         * FS node object holder
+         * @param {object} fc
+         */
+        var fs = require('fs');
+
+
+        /**
+         * Path node object holder
+         * @param {object} path
+         */
+        var path = require('path');
+
+        // ########################################### Object methods // ###############################################
+    }
+};
