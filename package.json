@@ -14,6 +14,9 @@
     "jscpd",
     "reporter"
   ],
+  "dependencies" : {
+    "xml2js" : "0.4.4"
+  },
   "author": "Nils Gajsek <info@linslin.org>",
   "license": "MIT",
   "bugs": {
