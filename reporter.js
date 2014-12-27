@@ -17,7 +17,6 @@
 
 // ##################################################  Module define // ################################################
 
-
 module.exports = {
 
     /**
@@ -26,6 +25,7 @@ module.exports = {
      * @param result
      */
     reporter: function (result) {
+
 
         // ########################################## Object attributes // #############################################
 
@@ -42,6 +42,17 @@ module.exports = {
          */
         var path = require('path');
 
+
         // ########################################### Object methods // ###############################################
+
+        /**
+         * Init function. Loads Templates and setup states
+         */
+        function init() {
+            console.log('lets init');
+        }
+
+        //run on load
+        init();
     }
 };

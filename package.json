@@ -1,0 +1,23 @@
+{
+  "name": "grunt-jscpd-reporter",
+  "version": "0.0.1",
+  "description": "Grunt JSCPD Reporter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linslin/grunt-jscpd-reporter"
+  },
+  "keywords": [
+    "jscpd",
+    "reporter"
+  ],
+  "author": "Nils Gajsek <info@linslin.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linslin/grunt-jscpd-reporter/issues"
+  },
+  "homepage": "https://github.com/linslin/grunt-jscpd-reporter"
+}
