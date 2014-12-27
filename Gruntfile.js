@@ -29,6 +29,11 @@ module.exports = function (grunt) {
     });
 
 
+    // Default task.
+    grunt.registerTask('default', jsCpdReporter);
+
+
+
     /**
      * JSCP Reporter
      */
@@ -91,7 +96,8 @@ module.exports = function (grunt) {
          */
         var templates = {
             layout: '',
-            _item: ''
+            _item: '',
+            _file: ''
         };
 
 
@@ -103,7 +109,7 @@ module.exports = function (grunt) {
         function init() {
 
             //cleanup report
-            fs.unlink(path.join(__dirname) + '/' + config.outputDir + '/*');
+            fs.unlink(path.join(__dirname) + '/' + config.outputDir + '/index.html');
 
             //load templates and output xml
             loadTemplates();
@@ -146,7 +152,7 @@ module.exports = function (grunt) {
         /**
          * Render HTML Output
          */
-        function renderHtmlOutput () {
+        function renderHtmlOutput() {
 
             if (cpdOutput['pmd-cpd'].duplication !== undefined) {
                 for (var key in cpdOutput['pmd-cpd'].duplication) {
@@ -157,6 +163,9 @@ module.exports = function (grunt) {
                     for (var prop in item) {
                         if(item.hasOwnProperty(prop)){
 
+                            //init
+                            var filesHtml = '';
+
                             //set lines
                             if (item[prop].lines !== undefined) {
                                 itemsHTML += templates._item.replace('{{lines}}', item[prop].lines);
@@ -165,6 +174,23 @@ module.exports = function (grunt) {
                             //set tokens
                             if (item[prop].tokens !== undefined) {
                                 itemsHTML = itemsHTML.replace('{{tokens}}', item[prop].tokens);
+                            }
+
+                            //set codefragment
+                            if (item.codefragment !== undefined) {
+                                itemsHTML = itemsHTML.replace('{{codeFragment}}', item.codefragment);
+                            }
+
+                            //get files
+                            if (item.file !== undefined) {
+                                for (var fileId in item.file) {
+                                    if(item.hasOwnProperty(prop)){
+                                        filesHtml += templates._file.replace('{{line}}', item.file[fileId]['$'].line);
+                                        filesHtml = filesHtml.replace('{{filePath}}', item.file[fileId]['$'].path);
+                                    }
+                                }
+
+                                itemsHTML = itemsHTML.replace('{{files}}', filesHtml);
                             }
                         }
                     }
@@ -179,7 +205,7 @@ module.exports = function (grunt) {
         /**
          * Create report
          */
-        function createReport () {
+        function createReport() {
             fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/index.html', outputHTML );
         }
 
@@ -187,9 +213,4 @@ module.exports = function (grunt) {
         //run
         init();
     }
-
-
-    // Default task.
-    grunt.registerTask('default', jsCpdReporter);
-
 };
