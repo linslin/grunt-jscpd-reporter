@@ -67,6 +67,12 @@ module.exports = function (grunt) {
         var xml2js = require('xml2js');
 
         /**
+         * Get beautify js
+         * @type {object} js-beautify'
+         */
+        var beautifyJs = require('js-beautify');
+
+        /**
          * Template path
          * @var {string} templatePath
          */
@@ -178,7 +184,8 @@ module.exports = function (grunt) {
 
                             //set codefragment
                             if (item.codefragment !== undefined) {
-                                itemsHTML = itemsHTML.replace('{{codeFragment}}', item.codefragment);
+
+                                itemsHTML = itemsHTML.replace('{{codeFragment}}', beautifyJs.js_beautify(String(item.codefragment)));
                             }
 
                             //get files
