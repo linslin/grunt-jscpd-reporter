@@ -15,7 +15,8 @@
     "reporter"
   ],
   "dependencies" : {
-    "xml2js" : "0.4.4"
+    "xml2js" : "0.4.4",
+    "js-beautify": "1.5.4"
   },
   "author": "Nils Gajsek <info@linslin.org>",
   "license": "MIT",
