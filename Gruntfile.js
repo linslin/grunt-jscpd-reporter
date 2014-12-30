@@ -73,6 +73,18 @@ module.exports = function (grunt) {
         var beautifyJs = require('js-beautify');
 
         /**
+         * syntaxhighlighter
+         * @var {object} node-syntaxhighlighter
+         */
+        var nsh =  require('node-syntaxhighlighter');
+
+        /**
+         * mkdirp
+         * @var {object} mkdirp
+         */
+        var mkdirp = require('mkdirp');
+
+        /**
          * Template path
          * @var {string} templatePath
          */
@@ -185,7 +197,10 @@ module.exports = function (grunt) {
                             //set codefragment
                             if (item.codefragment !== undefined) {
 
-                                itemsHTML = itemsHTML.replace('{{codeFragment}}', beautifyJs.js_beautify(String(item.codefragment)));
+                                itemsHTML = itemsHTML.replace(
+                                    '{{codeFragment}}',
+                                    nsh.highlight(beautifyJs.js_beautify(String(item.codefragment)), nsh.getLanguage('js'))
+                                );
                             }
 
                             //get files
@@ -199,6 +214,8 @@ module.exports = function (grunt) {
 
                                 itemsHTML = itemsHTML.replace('{{files}}', filesHtml);
                             }
+
+
                         }
                     }
                 }
@@ -213,6 +230,12 @@ module.exports = function (grunt) {
          * Create report
          */
         function createReport() {
+
+            //set nsh styles
+            mkdirp(path.join(__dirname) + '/' + config.outputDir + 'css/');
+            mkdirp(path.join(__dirname) + '/' + config.outputDir + 'css/nsh/');
+            nsh.copyStyles(path.join(__dirname) + '/' + config.outputDir + 'css/nsh/');
+
             fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/index.html', outputHTML );
         }
 
