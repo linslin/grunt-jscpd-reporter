@@ -24,8 +24,10 @@ module.exports = function (grunt) {
 
         jscpdreporter: {
             src : ['Gruntfile.js', 'tasks/*.js'],
-            sourcefile: '../mocks/output.xml',
-            outputDir: 'report/'
+            options: {
+                sourcefile: '../mocks/output.xml',
+                outputDir: 'report/'
+            }
         }
     });
 

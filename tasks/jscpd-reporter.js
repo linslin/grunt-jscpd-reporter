@@ -107,7 +107,7 @@ module.exports = function(grunt) {
         function init() {
 
             //cleanup report
-            fs.unlink(path.join(__dirname) + '/' + config.outputDir + '/index.html');
+            fs.unlink(path.join(__dirname) + '/' + config.options.outputDir + '/index.html');
 
             //load templates and output xml
             loadTemplates();
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         function loadOutputXml() {
 
             //read output file
-            cpdOutput = fs.readFileSync(path.join(__dirname) + '/' + config.sourcefile).toString();
+            cpdOutput = fs.readFileSync(path.join(__dirname) + '/' + config.options.sourcefile).toString();
 
             //parse output xml
             xml2js.parseString(cpdOutput, function(err, result){
@@ -226,15 +226,15 @@ module.exports = function(grunt) {
         function createReport() {
 
             //set nsh styles
-            mkdirp(path.join(__dirname) + '/../' + config.outputDir + 'css/');
-            mkdirp(path.join(__dirname) + '/../' + config.outputDir + 'css/nsh/');
+            mkdirp(path.join(__dirname) + '/../' + config.options.outputDir + 'css/');
+            mkdirp(path.join(__dirname) + '/../' + config.options.outputDir + 'css/nsh/');
 
-            fs.appendFileSync(path.join(__dirname) + '/../' + config.outputDir + '/css/nsh/default.css',
+            fs.appendFileSync(path.join(__dirname) + '/../' + config.options.outputDir + '/css/nsh/default.css',
                 fs.readFileSync( path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../templates/css/jscpd-reporter.css').toString());
 
-            fs.appendFileSync(path.join(__dirname) + '/../' + config.outputDir + '/index.html', outputHTML );
+            fs.appendFileSync(path.join(__dirname) + '/../' + config.options.outputDir + '/index.html', outputHTML );
         }
 
 
