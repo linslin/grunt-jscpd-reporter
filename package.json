@@ -1,6 +1,6 @@
 {
   "name": "grunt-jscpd-reporter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Grunt JSCPD Reporter",
   "main": "Gruntfile.js",
   "scripts": {

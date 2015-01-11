@@ -16,10 +16,19 @@ Grunt task https://github.com/mazerte/grunt-jscpd is required.
 
 ## Release log
 
-- 0.1.1 alpha release
+- 0.1.2 alpha release
 
+## Install
 
+    npm install grunt-jscpd-reporter
+    
 ## Configuration
+
+Gruntfile
+
+    // Gruntfile.js
+    grunt.loadNpmTasks('grunt-jscpd-reporter');
+
 Configure sourceFile and outputDir in grunt.initConfig();
 
     jscpdreporter: {
