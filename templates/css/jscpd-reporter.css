@@ -11,9 +11,18 @@
  *
  */
 
-html, body { font-family:"Bookman", Georgia, "Times New Roman", serif; }
+html, body { font-family:"Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial }
 
 .lines {}
 
 ul { list-style-type: none; margin:0; padding:0; }
 ul li { margin:0; padding:0; }
+
+ul.files li p.filepath { padding:1em 0em 0em 0em; margin:0; }
+ul.files li p.line { padding:0em 0em 0em 1em; margin:0; }
+
+
+h2 { background: #ECEDF7; padding:5px; }
+
+p.lines { margin:1em 0em 0em 0em; padding:0; }
+p.tokens { margin:0; padding:0; }
