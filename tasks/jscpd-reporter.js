@@ -106,6 +106,11 @@ module.exports = function(grunt) {
          */
         function init() {
 
+            //ensure output dir exists
+            if (!grunt.file.exists(process.cwd() + '/' + config.options.outputDir)) {
+                grunt.file.mkdir(process.cwd() + '/' + config.options.outputDir);
+            }
+
             //cleanup report
             fs.unlink(process.cwd() + '/' + config.options.outputDir + '/index.html');
 
@@ -118,6 +123,7 @@ module.exports = function(grunt) {
 
             //create report
             createReport();
+
 
         }
 
