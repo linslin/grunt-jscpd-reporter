@@ -1,6 +1,6 @@
 {
   "name": "grunt-jscpd-reporter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Grunt JSCPD Reporter",
   "main": "Gruntfile.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "xml2js" : "0.4.4",
     "js-beautify": "1.5.4",
     "node-syntaxhighlighter": "0.8.1",
-    "node-mkdirp": "0.5.0"
+    "mkdirp": "0.5.0"
   },
   "author": "Nils Gajsek <info@linslin.org>",
   "license": "MIT",
