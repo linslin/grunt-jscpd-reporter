@@ -199,7 +199,11 @@ module.exports = function (grunt) {
 
                                 itemsHTML = itemsHTML.replace(
                                     '{{codeFragment}}',
-                                    nsh.highlight(beautifyJs.js_beautify(String(item.codefragment)), nsh.getLanguage('js'))
+                                    nsh.highlight(
+                                        beautifyJs.js_beautify(String(item.codefragment)),
+                                        nsh.getLanguage('js'),
+                                        { 'gutter': false }
+                                    )
                                 );
                             }
 
@@ -234,7 +238,10 @@ module.exports = function (grunt) {
             //set nsh styles
             mkdirp(path.join(__dirname) + '/' + config.outputDir + 'css/');
             mkdirp(path.join(__dirname) + '/' + config.outputDir + 'css/nsh/');
-            nsh.copyStyles(path.join(__dirname) + '/' + config.outputDir + 'css/nsh/');
+
+            fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/css/nsh/default.css',
+                fs.readFileSync('/Users/nilsgajsek/Zend/workspaces/DefaultWorkspace/linslin-grunt-jscpd-reporter/node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
+                + fs.readFileSync('/Users/nilsgajsek/Zend/workspaces/DefaultWorkspace/linslin-grunt-jscpd-reporter/node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString());
 
             fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/index.html', outputHTML );
         }
