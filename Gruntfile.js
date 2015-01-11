@@ -172,17 +172,22 @@ module.exports = function (grunt) {
          */
         function renderHtmlOutput() {
 
+            //Init
+            var i = 0;
+
             if (cpdOutput['pmd-cpd'].duplication !== undefined) {
                 for (var key in cpdOutput['pmd-cpd'].duplication) {
 
                     //make item global for run
                     var item = cpdOutput['pmd-cpd'].duplication[key];
 
+
                     for (var prop in item) {
                         if(item.hasOwnProperty(prop)){
 
                             //init
                             var filesHtml = '';
+
 
                             //set lines
                             if (item[prop].lines !== undefined) {
@@ -193,6 +198,10 @@ module.exports = function (grunt) {
                             if (item[prop].tokens !== undefined) {
                                 itemsHTML = itemsHTML.replace('{{tokens}}', item[prop].tokens);
                             }
+
+                            // set items counter
+                            //make this line exec only one time
+                            itemsHTML = itemsHTML.replace('{{itemCounter}}', (i + 1) + '/' + cpdOutput['pmd-cpd'].duplication.length);
 
                             //set codefragment
                             if (item.codefragment !== undefined) {
@@ -219,9 +228,10 @@ module.exports = function (grunt) {
                                 itemsHTML = itemsHTML.replace('{{files}}', filesHtml);
                             }
 
-
                         }
                     }
+
+                    i++;
                 }
             }
 
@@ -240,8 +250,9 @@ module.exports = function (grunt) {
             mkdirp(path.join(__dirname) + '/' + config.outputDir + 'css/nsh/');
 
             fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/css/nsh/default.css',
-                fs.readFileSync('/Users/nilsgajsek/Zend/workspaces/DefaultWorkspace/linslin-grunt-jscpd-reporter/node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
-                + fs.readFileSync('/Users/nilsgajsek/Zend/workspaces/DefaultWorkspace/linslin-grunt-jscpd-reporter/node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString());
+                fs.readFileSync( path.join(__dirname) + '/node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
+                + fs.readFileSync(path.join(__dirname) + '/node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString()
+                + fs.readFileSync(path.join(__dirname) + '/templates/css/jscpd-reporter.css').toString());
 
             fs.appendFileSync(path.join(__dirname) + '/' + config.outputDir + '/index.html', outputHTML );
         }
