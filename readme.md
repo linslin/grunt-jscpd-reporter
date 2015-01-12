@@ -9,6 +9,12 @@ JSCPD Reporter just creates readable output formats. Use https://github.com/maze
 
 Hint: Currently only HTML-Output is supported.
 
+### Screenshot
+![Screenshot-1](http://linslin.org/grunt-jscpd-reporter/images/screen-1.png "Screenshot-1")
+
+### Demo
+Take a look at the [Demo](http://linslin.org/grunt-jscpd-reporter/demo/)
+
 ## Requirement dependency
 By using grunt-jscpd this extension will create an readable HTML file which is based on grunt-jscpd xml-output.
 
