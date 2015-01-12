@@ -24,7 +24,10 @@ Grunt task https://github.com/mazerte/grunt-jscpd is required.
 
 ## Release log
 
-- 0.1.2 alpha release
+#### 0.1.3 alpha release
+- Added demo link and screenshots.
+
+#### 0.1.2 alpha release
 
 ## Install
 
