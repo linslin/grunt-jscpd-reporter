@@ -1,6 +1,8 @@
 # Grunt JSCPD Reporter
 =======================
 
+[![NPM](https://nodei.co/npm/grunt-jscpd-reporter.png?downloads=true&stars=true)](https://nodei.co/npm/grunt-jscpd-reporter/)
+
 ## What is it?
 This grunt task extension is able to create different report output formats based on JavaScript Copy- Past- Detector reports.
 JSCPD Reporter just creates readable output formats. Use https://github.com/mazerte/grunt-jscpd to detect Copy- Past- errors.
