@@ -18,11 +18,14 @@ Take a look at the [Demo](http://linslin.org/grunt-jscpd-reporter/demo/)
 ## Requirement dependency
 By using grunt-jscpd this extension will create an readable HTML file which is based on grunt-jscpd xml-output.
 
-#### Build for grunt-jscpd  0.0.11 
+#### Build for jscpd & grunt-jscpd  0.0.11 
 Grunt task https://github.com/mazerte/grunt-jscpd is required.
 
 
 ## Release log
+
+#### 0.1.4 Stable release
+- Fixed issue #1 - https://github.com/linslin/grunt-jscpd-reporter/issues/1
 
 #### 0.1.3 alpha release
 - Added demo link and screenshots.

@@ -5,7 +5,7 @@
  * @package   grunt-jscpd-reporter
  * @author    Nils Gajsek <nils.gajsek@glanzkinder.com>
  * @copyright 2014-2015 Nils Gajsek <nils.gajsek@glanzkinder.com>
- * @version   0.1.3
+ * @version   0.1.4
  * @license   http://opensource.org/licenses/MIT MIT Public
  * @link      http://www.linslin.org
  *
@@ -235,7 +235,7 @@ module.exports = function(grunt) {
             mkdirp(process.cwd() + '/' + config.options.outputDir + 'css/');
             mkdirp(process.cwd() + '/' + config.options.outputDir + 'css/nsh/');
 
-            fs.appendFileSync(process.cwd() + '/' + config.options.outputDir + '/css/nsh/default.css',
+            fs.appendFileSync(process.cwd() + '/' + config.options.outputDir + 'css/nsh/default.css',
                 fs.readFileSync(path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../templates/css/jscpd-reporter.css').toString());
