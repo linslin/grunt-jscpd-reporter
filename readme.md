@@ -24,7 +24,7 @@ Grunt task https://github.com/mazerte/grunt-jscpd is required.
 
 ## Release log
 
-#### 0.1.4 Stable release
+#### 0.1.5 & 0.1.4 Stable release
 - Fixed issue #1 - https://github.com/linslin/grunt-jscpd-reporter/issues/1
 
 #### 0.1.3 alpha release
