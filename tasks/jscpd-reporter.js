@@ -106,23 +106,26 @@ module.exports = function(grunt) {
          */
         function init() {
 
-            //ensure output dir exists
-            if (!grunt.file.exists(process.cwd() + '/' + config.options.outputDir)) {
-                grunt.file.mkdir(process.cwd() + '/' + config.options.outputDir);
-            }
 
-            //cleanup report
-            fs.unlink(process.cwd() + '/' + config.options.outputDir + '/index.html');
+                //ensure output dir exists
+                if (!grunt.file.exists(path.resolve(process.cwd(), config.options.outputDir))) {
+                    grunt.file.mkdir(path.resolve(process.cwd(), config.options.outputDir));
+                }
 
-            //load templates and output xml
-            loadTemplates();
-            loadOutputXml();
+                //cleanup report
+                fs.unlink(path.resolve(process.cwd(), config.options.outputDir, 'index.html'));
 
-            //render output
-            renderHtmlOutput();
+                //load templates and output xml
+                loadTemplates();
+                loadOutputXml();
 
-            //create report
-            createReport();
+                //render output
+                renderHtmlOutput();
+
+                //create report
+                createReport();
+
+
 
 
         }
@@ -133,7 +136,7 @@ module.exports = function(grunt) {
          */
         function loadTemplates() {
             for (var template in templates) {
-                templates[template] = fs.readFileSync(templatePath + template + '.html').toString();
+                templates[template] = fs.readFileSync( templatePath + template + '.html').toString();
             }
         }
 
@@ -144,7 +147,7 @@ module.exports = function(grunt) {
         function loadOutputXml() {
 
             //read output file
-            cpdOutput = fs.readFileSync(process.cwd() + '/' + config.options.sourcefile).toString();
+            cpdOutput = fs.readFileSync( path.resolve(process.cwd() , config.options.sourcefile ) ).toString();
 
             //parse output xml
             xml2js.parseString(cpdOutput, function(err, result){
@@ -233,20 +236,20 @@ module.exports = function(grunt) {
 
             //set nsh styles
             //set nsh styles
-            mkdirp.sync(process.cwd() + '/' + config.options.outputDir + 'css/', function(err){
+            mkdirp.sync( path.resolve(process.cwd() , config.options.outputDir , 'css/' ), function(err){
                 console.log(err);
             });
 
-            mkdirp.sync(process.cwd() + '/' + config.options.outputDir + 'css/nsh/', function(err){
+            mkdirp.sync( path.resolve(process.cwd() , config.options.outputDir , 'css/nsh/' ), function(err){
                 console.log(err);
             });
 
-            fs.appendFileSync(process.cwd() + '/' + config.options.outputDir + 'css/nsh/default.css',
-                fs.readFileSync(path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
+            fs.appendFileSync( path.resolve(process.cwd() , config.options.outputDir , 'css/nsh/default.css' ),
+                fs.readFileSync( path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCoreDefault.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../node_modules/node-syntaxhighlighter/lib/styles/shCore.css').toString()
                 + fs.readFileSync(path.join(__dirname) + '/../templates/css/jscpd-reporter.css').toString());
 
-            fs.appendFileSync(process.cwd() + '/' + config.options.outputDir + '/index.html', outputHTML );
+            fs.appendFileSync( path.resolve(process.cwd() , config.options.outputDir , 'index.html' ), outputHTML );
         }
 
 
