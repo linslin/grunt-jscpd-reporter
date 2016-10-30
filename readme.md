@@ -21,17 +21,6 @@ By using grunt-jscpd this extension will create an readable HTML file which is b
 #### Build for jscpd & grunt-jscpd  0.0.11 
 Grunt task https://github.com/mazerte/grunt-jscpd is required.
 
-
-## Release log
-
-#### 0.1.5 & 0.1.4 Stable release
-- Fixed issue #1 - https://github.com/linslin/grunt-jscpd-reporter/issues/1
-
-#### 0.1.3 alpha release
-- Added demo link and screenshots.
-
-#### 0.1.2 alpha release
-
 ## Install
 
     npm install grunt-jscpd-reporter
@@ -51,3 +40,18 @@ Configure sourceFile and outputDir in grunt.initConfig();
             outputDir: 'report/'
         }
     }
+
+
+## Release log
+
+#### 0.2.0
+
+
+
+#### 0.1.5 & 0.1.4 Stable release
+- Fixed issue #1 - https://github.com/linslin/grunt-jscpd-reporter/issues/1
+
+#### 0.1.3 alpha release
+- Added demo link and screenshots.
+
+#### 0.1.2 alpha release
