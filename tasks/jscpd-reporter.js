@@ -94,7 +94,8 @@ module.exports = function(grunt) {
         var templates = {
             layout: '',
             _item: '',
-            _file: ''
+            _file: '',
+            _noDuplicates: ''
         };
 
 
@@ -164,7 +165,6 @@ module.exports = function(grunt) {
                     //make item global for run
                     var item = cpdOutput['pmd-cpd'].duplication[key];
 
-
                     for (var prop in item) {
                         if(item.hasOwnProperty(prop)){
 
@@ -216,6 +216,8 @@ module.exports = function(grunt) {
 
                     i++;
                 }
+            } else if (cpdOutput['pmd-cpd'] !== undefined) {
+                itemsHTML = templates._noDuplicates;
             }
 
             //render items into layout
@@ -245,7 +247,6 @@ module.exports = function(grunt) {
 
             fs.appendFileSync(process.cwd() + '/' + config.options.outputDir + '/index.html', outputHTML );
         }
-
 
         //run
         init();

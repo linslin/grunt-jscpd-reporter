@@ -11,7 +11,27 @@
  *
  */
 
-html, body { font-family:"Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial }
+html, body {
+    font-family:"Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+    color: #333;
+}
+
+footer {
+    height: 30px;
+    background: #D9DDE7;
+    padding:5px;
+}
+footer p {
+    margin:6px 6px 3px 3px;
+}
+footer img {
+    margin-top:3px;
+}
+
+
+a {
+    color: #333;
+}
 
 .lines {}
 
@@ -21,8 +41,44 @@ ul li { margin:0; padding:0; }
 ul.files li p.filepath { padding:1em 0em 0em 0em; margin:0; }
 ul.files li p.line { padding:0em 0em 0em 1em; margin:0; }
 
-
+h1 { background: #D9DDE7; padding:5px; margin: 0 0 8px 0 }
 h2 { background: #ECEDF7; padding:5px; }
-
 p.lines { margin:1em 0em 0em 0em; padding:0; }
 p.tokens { margin:0; padding:0; }
+
+.no-duplicates {
+    display:block;
+    width:100%;
+    text-align:center;
+}
+.no-duplicates img {
+}
+.no-duplicates h3 {
+    margin-top:0;
+    font-size: 1.2em;
+    line-height: 10px;
+    padding: 10px 0;
+}
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+}
+
+.left {
+    float:left;
+}
+
+.right {
+    float:right;
+}
+
+.syntaxhighlighter {
+    overflow:hidden !important;;
+}
+
+.items h2:first-child {
+    margin-top:3px;
+}
