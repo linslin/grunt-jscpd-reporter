@@ -21,8 +21,7 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
-
-        jscpdreporter: {
+        jscpdReporter: {
             src : ['Gruntfile.js', 'tasks/*.js'],
             options: {
                 sourcefile: 'mocks/output.xml',

@@ -25,7 +25,7 @@ module.exports = function(grunt) {
          * Configuration object
          * @var {object} config
          */
-        var config = grunt.config.get('jscpdreporter');
+        var config = grunt.config.get('jscpdReporter');
 
         /**
          * Get path object
