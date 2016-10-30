@@ -50,7 +50,6 @@ Configure sourceFile and outputDir in grunt.initConfig();
 - Tuned layout and UI. 
 - Fixed https://github.com/linslin/grunt-jscpd-reporter/issues/3.
 
-
 #### 0.1.5 & 0.1.4 Stable release
 - Fixed issue #1 - https://github.com/linslin/grunt-jscpd-reporter/issues/1
 
