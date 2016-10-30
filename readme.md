@@ -46,6 +46,9 @@ Configure sourceFile and outputDir in grunt.initConfig();
 
 #### 0.2.0
 - Renamed grunt configuration index into `jscpdReporter`.
+- Added "no duplicates found - message" https://github.com/linslin/grunt-jscpd-reporter/issues/2. 
+- Tuned layout and UI. 
+- Fixed https://github.com/linslin/grunt-jscpd-reporter/issues/3.
 
 
 #### 0.1.5 & 0.1.4 Stable release
