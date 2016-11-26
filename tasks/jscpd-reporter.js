@@ -112,7 +112,9 @@ module.exports = function(grunt) {
             }
 
             //cleanup report
-            fs.unlink(process.cwd() + '/' + config.options.outputDir + '/index.html');
+            var reportFile = process.cwd() + '/' + config.options.outputDir + '/index.html';
+            if (grunt.file.exists(reportFile))
+                fs.unlink(reportFile);
 
             //load templates and output xml
             loadTemplates();
